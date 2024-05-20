@@ -55,9 +55,9 @@ const _sfc_main = {
             c: common_vendor.o(($event) => _ctx.deleteImg(index), index),
             d: index
           };
-        })
+        }),
+        e: common_vendor.o((...args) => _ctx.upImage && _ctx.upImage(...args))
       } : {}, {
-        e: common_vendor.o((...args) => _ctx.upImage && _ctx.upImage(...args)),
         f: video.sto_video != ""
       }, video.sto_video != "" ? {
         g: common_vendor.o(($event) => video.sto_video = "")
@@ -116,5 +116,5 @@ const _sfc_main = {
     };
   }
 };
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "/Users/weiyingwei/Documents/HBuilderProjects/lingshi-admin/pages/goods-admin/goods.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "D:/wx-cloud-shop-admin/pages/goods-admin/goods.vue"]]);
 wx.createPage(MiniProgramPage);

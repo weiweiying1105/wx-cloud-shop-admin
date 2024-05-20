@@ -58,5 +58,5 @@ const _sfc_main = {
     };
   }
 };
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-f133ce92"], ["__file", "/Users/weiyingwei/Documents/HBuilderProjects/lingshi-admin/pages/commodity/commodity.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-f133ce92"], ["__file", "D:/wx-cloud-shop-admin/pages/commodity/commodity.vue"]]);
 wx.createPage(MiniProgramPage);

@@ -1,5 +1,6 @@
 <template>
-	<!-- 顶部 -->
+<view>
+  	<!-- 顶部 -->
 	<view class="attribute">
 		<view class="edit">
 			<text>请给商品规格设置合适的属性</text>
@@ -19,12 +20,15 @@
 			<text>规格{{item.title}}</text>
 			<text v-if="sku_data.sku.length > 1" @click="deleteSku(index)">删除</text>
 		</view>
-		<view class="edit entry" v-if="item.att_data.length > 0" v-for="(item_add,index_add) in item.att_data"
+    <!-- 自定义属性 -->
+    <view v-if="item.att_data.length > 0">
+		<view class="edit entry"  v-for="(item_add,index_add) in item.att_data"
 			:key="index_add">
 			<text>{{item_add.att_name}}</text>
 			<input type="text" v-model="item_add.att_val" :placeholder=" '请输入' + item_add.att_name "
 				placeholder-class="I-style" cursor-spacing="50">
 		</view>
+    </view>
 		<view class="edit entry">
 			<text>价格</text>
 			<input type="number" v-model="item.price" placeholder="请输入价格" placeholder-class="I-style"
@@ -74,6 +78,8 @@
 			<text @click="preserve">保存</text>
 		</view>
 	</view>
+</view>
+
 </template>
 
 <script setup>
@@ -84,34 +90,43 @@
 	// 控制弹窗框显示
 	const show = ref(false);
 	/* 存储sku数据 */
-	const sku_data = reactive({ //{att_name:'颜色',att_val:''}
+	const sku_data = reactive({ 
 		sku: [{
 			title: 1,
-			att_data: [], //动态属性
+			att_data: [], //动态属性[{att_name:'颜色',att_val:''}]
 			price: '',
 			stock: '',
 			image: ''
 		}]
 	})
-	/* 创建的属性 */
+	/* 创建的自定义属性，三个 */
 	const Sto_att = reactive({
 		attobj: [{
 			att: '',
-			title: 1
 		}, {
 			att: '',
-			title: 2
 		}, {
 			att: '',
-			title: 3
 		}]
 	})
 	/* 多选框的值 */
 	const attribute = reactive({
-		selected: []
+		selected: [], // {att:'',checked:''}
 	})
-	// 提交属性，关闭弹窗
+	// 提交自定义属性，关闭弹窗
 	function handleSubMitAttr() {
+    // 过滤为空的
+    attribute.selected = Sto_att.attobj.filter(item => {
+      console.log(item);
+      item.att != ''
+    }).map(element => {
+      console.log(element)
+      element.checked=true;
+
+    });
+   
+    // 关闭弹窗
+    show.value = false
 
 	}
 	// 计算生成动态规格

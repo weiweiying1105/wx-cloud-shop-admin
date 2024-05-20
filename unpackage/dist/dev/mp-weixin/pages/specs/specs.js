@@ -5,11 +5,10 @@ const _sfc_main = {
   setup(__props) {
     const show = common_vendor.ref(false);
     const sku_data = common_vendor.reactive({
-      //{att_name:'颜色',att_val:''}
       sku: [{
         title: 1,
         att_data: [],
-        //动态属性
+        //动态属性[{att_name:'颜色',att_val:''}]
         price: "",
         stock: "",
         image: ""
@@ -17,20 +16,26 @@ const _sfc_main = {
     });
     const Sto_att = common_vendor.reactive({
       attobj: [{
-        att: "",
-        title: 1
+        att: ""
       }, {
-        att: "",
-        title: 2
+        att: ""
       }, {
-        att: "",
-        title: 3
+        att: ""
       }]
     });
     const attribute = common_vendor.reactive({
       selected: []
+      // {att:'',checked:''}
     });
     function handleSubMitAttr() {
+      attribute.selected = Sto_att.attobj.filter((item) => {
+        console.log(item);
+        item.att != "";
+      }).map((element) => {
+        console.log(element);
+        element.checked = true;
+      });
+      show.value = false;
     }
     function newSpecs() {
     }
@@ -121,5 +126,5 @@ const _sfc_main = {
     };
   }
 };
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "/Users/weiyingwei/Documents/HBuilderProjects/lingshi-admin/pages/specs/specs.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "D:/wx-cloud-shop-admin/pages/specs/specs.vue"]]);
 wx.createPage(MiniProgramPage);
